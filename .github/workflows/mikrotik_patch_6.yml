@@ -86,7 +86,7 @@ jobs:
         echo $(uname -a)
         LATEST_VERSION=${{ github.event.inputs.version }}
         if [ -z  "$_LATEST_VERSION" ]; then
-          LATEST_VERSION=$(wget -nv -O - https://https://download.mikrotik.com/routeros/6.49.18/mikrotik-6.49.18.iso/routeros/NEWEST6.${{ matrix.channel }} | cut -d ' ' -f1)
+          LATEST_VERSION=$(wget -nv -O - https://${{ env.MIKRO_UPGRADE_URL }}/routeros/NEWEST6.${{ matrix.channel }} | cut -d ' ' -f1)
         fi
         echo Latest Version:$LATEST_VERSION
         if [ "${{ github.event_name }}" == "schedule" ]; then
